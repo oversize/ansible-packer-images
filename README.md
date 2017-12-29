@@ -41,23 +41,25 @@ the built images. https://www.packer.io/docs/templates/provisioners.html
 
 ## Provisioning
 
+After the Builders have run the Provisioning is done for each builder.
+You can configure to have some provisioners only run on some builders. See docs
+
+Most of them are run on the built image. The shell-local provisioner however
+is run on the local machine (the one where packer runs).
+
+Most builders are straight forward. In general just rememer that they are run
+after the image was booted the first time to install software and configure
+things before the image is created.
+
 ## Aws Authentication
 
+Will be pulled fom you cli if you have that installed (and configured).
+If not provide enviroment variables.
 
+    AWS_SECRET_ACCESS_KEY='xxx'
+    AWS_ACCESS_KEY_ID='xxx'
 
-
-
-
-### Web Server
-
-The Web server has nginx and alot of PHP stuff installed.
-
-### Solr Server
-
-
-
-### Deployment Server
-
+You can olso have packer ask you for these during build. See packer docs
 
 # More
 

@@ -1,0 +1,28 @@
+{
+  "variables": {},
+  "builders": [{
+    "type": "amazon-ebs",
+    "region": "eu-west-2",
+    "source_ami": "ami-e7d6c983",
+    "instance_type": "t2.micro",
+    "ssh_username": "ec2-user",
+    "ami_name": "packer-example-3 ansible-nginx  {{ timestamp }}"
+  }],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "# Sleep is important to let the system get up properly ...  ",
+        "sleep 30",
+        "sudo yum -y update",
+        "sudo yum -y install python-pip",
+        "sudo pip install ansible",
+        "ansible-galaxy install nginxinc.nginx-oss"
+      ]
+    },
+    {
+      "type": "ansible-local",
+      "playbook_file": "playbook.yml"
+    }
+  ]
+}

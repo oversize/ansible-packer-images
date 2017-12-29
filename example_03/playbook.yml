@@ -1,0 +1,14 @@
+# Make the localhost a NGINX server
+#
+# The official nginx role needs the gater_facts because it needs to find out
+# what OS we are on.
+#
+---
+- hosts: all
+  become: true
+  roles:
+    - role: nginxinc.nginx-oss
+  tasks:
+    - service: name=nginx state=started
+      become: yes
+      become_method: sudo
