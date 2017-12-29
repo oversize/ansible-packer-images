@@ -24,7 +24,28 @@ please contact me.
 
 https://www.packer.io/intro/getting-started/install.html
 
-Packer builds images using Templates. Templates have
+Packer builds images using Templates. Templates are written in JSON and
+contain the following elements. For a Detailed explanation of the Structure
+see here: https://www.packer.io/docs/templates/index.html
+
+**variables** Defines variables for us in the template
+
+**builders** A list of the builders that this template builds. A single
+Template can have multiple builders.https://www.packer.io/docs/templates/builders.html
+
+**provisioners** A list of provisionser that should be run for each(!) builder.
+https://www.packer.io/docs/templates/provisioners.html
+
+**post-processors** A list of post-processors that define steps to do with
+the built images. https://www.packer.io/docs/templates/provisioners.html
+
+## Provisioning
+
+## Aws Authentication
+
+
+
+
 
 
 ### Web Server

@@ -1,0 +1,32 @@
+{
+  "variables": {},
+  "builders": [{
+    "type": "amazon-ebs",
+    "region": "eu-west-2",
+    "source_ami": "ami-e7d6c983",
+    "instance_type": "t2.micro",
+    "ssh_username": "ec2-user",
+    "ami_name": "packer-example-2 {{ timestamp }}"
+  }],
+  "provisioners": [
+    {
+      "type": "shell-local",
+      "command": "echo foo"
+    },
+    {
+      "type": "file",
+      "source": "a_provisioned_file.txt",
+      "destination": "/tmp/a_provisionerd_file.txt"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "# Sleep is important to let the system get up properly ...  ",
+        "sleep 30",
+        "sudo yum -y update",
+        "sudo yum -y install nginx htop python-pip tmux",
+        "sudo pip install httpie"
+      ]
+    }
+  ]
+}

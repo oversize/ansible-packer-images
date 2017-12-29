@@ -1,0 +1,5 @@
+This is just a dumy file to show how the file provisioner works.
+It is recommende to use the file provisioner only for adding files into the
+image and later modify/work with the file using the shell provisioner
+
+https://www.packer.io/docs/provisioners/file.html
